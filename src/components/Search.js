@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faHome, faSearch, faSortNumericDown } from '@fortawesome/free-solid-svg-icons';
 import { Row, Col, Button, Alert } from "reactstrap";
 import Listings from "./Listings";
 
 let searchingBegun = false;
+
+const sortOnPrice = listings => {
+    let sorted = [...listings]
+    sorted.sort((a,b) => {
+      let first = a['Price'].substring(1)
+      let second = b['Price'].substring(1)
+      return parseFloat(first) - parseFloat(second)
+    })
+    return sorted;
+  }
 
 const roomTypeOptions = [
     { value: 'Any', label: 'Any type'},
@@ -41,7 +51,7 @@ const getSearchedListings = (listings, type, neighborhood) => {
     if (Object.keys(type).length > 0 && type.selectedOptions.value !== 'Any') {
         searchedResults = searchedResults.filter(listing => listing['RoomType'] === type.selectedOptions.value)
     };
-    if (Object.keys(neighborhood).length > 0) {
+    if (Object.keys(neighborhood).length > 0 && neighborhood.selectedOptions !== null) {
         let result = [];
         for (let i = 0; i < searchedResults.length; i++) {
             if (showListing(neighborhood, searchedResults[i])) {
@@ -99,16 +109,19 @@ const Search = () => {
         setNeighborhood({ selectedOptions });
     }
 
+    const onSortPriceClick = () => {
+        setResult(sortOnPrice(result))
+    }
     return (
         <>
             <Row>
-                <Col md={{size: 10, offset: 1}}>
+                <Col xs={{size: 10, offset: 1}}>
                     <p><FontAwesomeIcon icon={faHome} />
                     <span className="left-padding">Places to stay in Seattle. </span></p>
                 </Col>
             </Row>
             <Row>
-                <Col md={{size: 10, offset: 1}}>
+                <Col xs={{size: 10, offset: 1}}>
                     <p><FontAwesomeIcon icon={faFilter} />
                     <span className="left-padding">Select at least one option to begin:  </span></p>
                 </Col>
@@ -127,7 +140,7 @@ const Search = () => {
                             onChange={onNeighborhoodOptionChange}
                             />
                 </Col>
-                <Col md="3" align="left">
+                <Col md="2" align="left">
                     <Button color="secondary"
                             active={roomType.length > 0 || neighborhood.length > 0}
                             disabled={roomType.length === 0 && neighborhood.length === 0}
@@ -135,7 +148,9 @@ const Search = () => {
                                 onSearchClick();
                                 }}><FontAwesomeIcon icon={faSearch} />{' '}
                         Search
-                    </Button>
+                    </Button>{"  "}
+                    <Button color="info" onClick={() => onSortPriceClick()}>
+                        ${" "}<FontAwesomeIcon icon={faSortNumericDown} /></Button>
                 </Col>
             </Row>
             <Row>
