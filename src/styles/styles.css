@@ -1,0 +1,80 @@
+body {
+    font-size: 15px;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+h1 {
+    font-size: 2.75em;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color:rgb(65, 60, 71)
+}
+
+h5 {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+h6 {
+    font-size: 0.9em;
+    font-weight: 300;
+    color:rgb(143, 142, 142)
+}
+
+hr {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.homepage-header {
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+.left-padding {
+    padding-left: 0.5em;
+}
+
+.right-padding {
+    padding-right: 0.5em;
+}
+
+.top-padding {
+    padding-top: 0.5em;
+}
+
+.top-margin {
+    margin-top: 1em;
+}
+
+.bottom-margin {
+    margin-bottom: 1em;
+}
+
+.card-img {
+    border-radius: 8px;
+    display: block;
+}
+
+.card-text {
+    font-size: 0.8em;
+    font-weight: 600;
+    color:rgb(143, 142, 142)
+}
+
+.fab {
+    color: #FF385C
+}
+
+.fa-airbnb {
+    color: #FF385C
+}
+
+.url-btn {
+    font-size: 0.9em !important;
+    padding: none
+}
+
+.safe-bg {
+    font-size: 0.9em !important
+}
