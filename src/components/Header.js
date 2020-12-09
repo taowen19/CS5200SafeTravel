@@ -7,7 +7,7 @@ const Header = () =>
     <Row className="homepage-header text-center">
         <Col md={{size: 10, offset: 1}}>
             <h1><FontAwesomeIcon className="fa-airbnb" icon={faAirbnb} />
-                <span className="left-padding">SafeTravel</span></h1>
+                <span className="left-padding">Safe</span>Travel</h1>
             <hr />
         </Col>
     </Row>

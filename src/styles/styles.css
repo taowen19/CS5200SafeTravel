@@ -1,6 +1,9 @@
 body {
-    font-size: 15px;
+    font-size: 18px;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    background: url(./seattle.jpg);
+    background-size: cover;
+    background-position: absolute;
 }
 
 h1 {
